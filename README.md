@@ -1,0 +1,1 @@
+Projeto do livro Apache Kafka e Spring Boot (https://www.casadocodigo.com.br/products/livro-apache-kafka)
