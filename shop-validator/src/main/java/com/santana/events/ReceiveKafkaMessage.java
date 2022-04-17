@@ -1,9 +1,9 @@
-package com.santana.validator.events;
+package com.santana.events;
 
-import com.santana.validator.dto.ShopDTO;
-import com.santana.validator.dto.ShopItemDTO;
-import com.santana.validator.model.Product;
-import com.santana.validator.repository.ProductRepository;
+import com.santana.dto.ShopDTO;
+import com.santana.dto.ShopItemDTO;
+import com.santana.model.Product;
+import com.santana.repository.ProductRepository;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
 @Slf4j
+@Service
 @RequiredArgsConstructor
 public class ReceiveKafkaMessage {
     

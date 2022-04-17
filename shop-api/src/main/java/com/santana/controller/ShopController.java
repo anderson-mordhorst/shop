@@ -1,4 +1,4 @@
-package com.santana.api.controller;
+package com.santana.controller;
 
 import static java.util.stream.Collectors.toList;
 
@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import com.santana.api.dto.ShopDTO;
-import com.santana.api.events.KafkaClient;
-import com.santana.api.model.Shop;
-import com.santana.api.repository.ShopRepository;
+import com.santana.dto.ShopDTO;
+import com.santana.events.KafkaClient;
+import com.santana.model.Shop;
+import com.santana.repository.ShopRepository;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

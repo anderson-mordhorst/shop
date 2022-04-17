@@ -1,4 +1,4 @@
-package com.santana.validator.dto;
+package com.santana.dto;
 
 import lombok.Data;
 

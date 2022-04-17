@@ -1,6 +1,6 @@
-package com.santana.api.events;
+package com.santana.events;
 
-import com.santana.api.dto.ShopDTO;
+import com.santana.dto.ShopDTO;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

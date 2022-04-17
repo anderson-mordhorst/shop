@@ -1,9 +1,9 @@
-package com.santana.api.events;
+package com.santana.events;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.santana.api.dto.ShopDTO;
+import com.santana.dto.ShopDTO;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
