@@ -1,4 +1,4 @@
-package com.santana.model;
+package com.santana.api.model;
 
 import static java.util.stream.Collectors.toList;
 
@@ -14,7 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.santana.dto.ShopDTO;
+import com.santana.api.dto.ShopDTO;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.santana.dto;
+package com.santana.api.dto;
 
 import static java.util.stream.Collectors.toList;
 
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.santana.model.Shop;
+import com.santana.api.model.Shop;
 
 import lombok.Data;
 

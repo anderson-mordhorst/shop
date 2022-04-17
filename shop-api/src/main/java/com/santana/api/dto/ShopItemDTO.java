@@ -1,6 +1,6 @@
-package com.santana.dto;
+package com.santana.api.dto;
 
-import com.santana.model.ShopItem;
+import com.santana.api.model.ShopItem;
 
 import lombok.Data;
 

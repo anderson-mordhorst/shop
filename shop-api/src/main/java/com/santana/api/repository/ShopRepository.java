@@ -1,6 +1,6 @@
-package com.santana.repository;
+package com.santana.api.repository;
 
-import com.santana.model.Shop;
+import com.santana.api.model.Shop;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

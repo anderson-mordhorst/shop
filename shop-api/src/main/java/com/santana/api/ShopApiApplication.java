@@ -1,4 +1,4 @@
-package com.santana;
+package com.santana.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

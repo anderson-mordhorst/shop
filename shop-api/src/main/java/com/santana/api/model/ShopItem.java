@@ -1,4 +1,4 @@
-package com.santana.model;
+package com.santana.api.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.santana.dto.ShopItemDTO;
+import com.santana.api.dto.ShopItemDTO;
 
 import lombok.Data;
 
