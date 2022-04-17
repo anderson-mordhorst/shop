@@ -1,6 +1,6 @@
-package com.santana.repository;
+package com.santana.validator.repository;
 
-import com.santana.model.Product;
+import com.santana.validator.model.Product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

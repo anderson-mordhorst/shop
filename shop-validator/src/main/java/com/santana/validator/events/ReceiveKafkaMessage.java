@@ -1,9 +1,9 @@
-package com.santana.events;
+package com.santana.validator.events;
 
-import com.santana.dto.ShopDTO;
-import com.santana.dto.ShopItemDTO;
-import com.santana.model.Product;
-import com.santana.repository.ProductRepository;
+import com.santana.validator.dto.ShopDTO;
+import com.santana.validator.dto.ShopItemDTO;
+import com.santana.validator.model.Product;
+import com.santana.validator.repository.ProductRepository;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;

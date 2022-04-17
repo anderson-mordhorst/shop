@@ -1,4 +1,4 @@
-package com.santana.model;
+package com.santana.validator.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
