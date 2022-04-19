@@ -27,7 +27,6 @@ public class KafkaConfig {
     @Value("${kafka.bootstrapAddress:localhost:9092}")
     private String bootstrapAddress;
 
-
     @Bean
     public KafkaTemplate<String, ShopDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
@@ -54,6 +53,7 @@ public class KafkaConfig {
         JsonDeserializer<ShopDTO> deserializer = new JsonDeserializer<>();
         Map<String, Object> properties = new HashMap<>();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        properties.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
 
         return new DefaultKafkaConsumerFactory<>(properties, new StringDeserializer(), deserializer);
     }
