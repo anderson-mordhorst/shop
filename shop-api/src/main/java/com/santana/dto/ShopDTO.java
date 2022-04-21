@@ -16,11 +16,13 @@ public class ShopDTO {
     private String identifier;
     private LocalDate dateShop;
     private String status;
+    private String buyerIdentifier;
     private List<ShopItemDTO> items = new ArrayList<>();
 
     public static ShopDTO convert(Shop entity) {
         ShopDTO dto = new ShopDTO();
         dto.setIdentifier(entity.getIdentifier());
+        dto.setBuyerIdentifier(entity.getBuyerIdentifier());
         dto.setStatus(entity.getStatus());
         dto.setDateShop(entity.getDateShop());
         dto.setItems(entity.getItems().stream().map(ShopItemDTO::convert).collect(toList()));

@@ -7,6 +7,9 @@ import com.santana.repository.ProductRepository;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -24,9 +27,11 @@ public class ReceiveKafkaMessage {
     private final KafkaTemplate<String, ShopDTO> kafkaTemplate;
 
     @KafkaListener(topics = SHOP_TOPIC_NAME, groupId = "group")
-    public void listenShopTopis(ShopDTO dto){
+    public void listenShopTopic(@Payload ShopDTO dto,
+                                @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
+                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) String timestamp){
         try{
-            log.info("Compra recebida no tópico {}", dto.getIdentifier());
+            log.info("Compra recebida no tópico: {} com chave {} na hora {}.", dto.getIdentifier(), key, timestamp);
             boolean success = true;
             for(ShopItemDTO item: dto.getItems()) {
                 Product product = repository.findByIdentifier(item.getProductIdentifier());

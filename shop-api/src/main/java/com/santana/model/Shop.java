@@ -33,6 +33,9 @@ public class Shop {
     @Column(name = "date_shop")
     private LocalDate dateShop;
 
+    @Column(name = "buyer_identifier")
+    private String buyerIdentifier;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "shop")
     private List<ShopItem> items;
 
@@ -41,6 +44,7 @@ public class Shop {
         entity.setIdentifier(dto.getIdentifier());
         entity.setStatus(dto.getStatus());
         entity.setDateShop(dto.getDateShop());
+        entity.setBuyerIdentifier(dto.getBuyerIdentifier());
         entity.setItems(dto.getItems().stream().map(ShopItem::convert).collect(toList()));
 
         return entity;

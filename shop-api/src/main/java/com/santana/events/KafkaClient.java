@@ -15,6 +15,6 @@ public class KafkaClient {
     private final KafkaTemplate<String, ShopDTO> kafkaTemplate;
 
     public void sendMessage(ShopDTO dto) {
-        kafkaTemplate.send(SHOP_TOPIC_NAME, dto);
+        kafkaTemplate.send(SHOP_TOPIC_NAME, dto.getBuyerIdentifier(), dto);
     }
 }
