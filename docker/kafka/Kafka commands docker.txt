@@ -1,0 +1,32 @@
+Para executar o bash no container:
+docker exec -it shop-api-kafka /bin/bash
+
+Para criar os tópicos do projeto:
+/bin/kafka-topics --create --topic SHOP_TOPIC --bootstrap-server localhost:9092
+/bin/kafka-topics --create --topic SHOP_TOPIC_EVENT --bootstrap-server localhost:9092
+
+Para listar tópicos:
+/bin/kafka-topics --list --bootstrap-server localhost:9092
+
+Para ver os detalhes do tópico criado acima:
+/bin/kafka-topics --describe --topic SHOP_TOPIC --bootstrap-server localhost:9092
+
+Para iniciar um producer no tópico acima:
+/bin/kafka-console-producer --topic SHOP_TOPIC --bootstrap-server localhost:9092
+
+Para iniciar um consumer no tópico acima:
+/bin/kafka-console-consumer --topic SHOP_TOPIC --bootstrap-server localhost:9092
+
+Se quiser criar um consumer em um grupo:
+/bin/kafka-console-consumer --topic SHOP_TOPIC --bootstrap-server localhost:9092 --consumer-property group.id=grupo-1
+
+Se tiver enviado alguma mensagem antes de criar o consumer, precisa ler as mensagens desde o início:
+/bin/kafka-console-consumer --topic SHOP_TOPIC --from-beginning --bootstrap-server localhost:9092
+
+Para listar todos os grupos de consumers:
+/bin/kafka-consumer-groups --list --bootstrap-server localhost:9092
+
+Se quiser efetuar apenas um comando:
+docker exec -it shop-api-kafka /bin/bash /bin/kafka-topics --create --topic SHOP_TOPIC --bootstrap-server localhost:9092
+docker exec -it shop-api-kafka /bin/bash /bin/kafka-topics --create --topic SHOP_TOPIC_EVENT --bootstrap-server localhost:9092
+docker exec -it shop-api-kafka /bin/bash /bin/kafka-topics --list --bootstrap-server localhost:9092
