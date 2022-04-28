@@ -3,8 +3,8 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: shop-api-zookeeper
-    networks: 
-      - broker-kafka
+    ports:
+      - "2181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -12,32 +12,64 @@ services:
   kafka:
     image: confluentinc/cp-kafka:latest
     container_name: shop-api-kafka
-    networks: 
-      - broker-kafka
     depends_on:
       - zookeeper
     ports:
-      - 9092:9092
+      - "9092:9092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafdrop:
     image: obsidiandynamics/kafdrop:latest
     container_name: shop-api-kafkadrop
-    networks: 
-      - broker-kafka
     depends_on:
       - kafka
     ports:
-      - 19000:9000
+      - "19000:9000"
     environment:
       KAFKA_BROKERCONNECT: kafka:29092
 
-networks: 
-  broker-kafka:
-    driver: bridge 
+  shop-api:
+    image: shop-api
+    container_name: shop-api
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+
+  shop-validator:
+    image: shop-validator
+    container_name: shop-validator
+    depends_on:
+      - kafka
+    ports:
+      - "8081:8081"
+
+  shop-report:
+    image: shop-report
+    container_name: shop-report
+    depends_on:
+      - kafka
+    ports:
+      - "8082:8082"
+
+  shop-retry:
+    image: shop-retry
+    container_name: shop-retry
+    depends_on:
+      - kafka
+    ports:
+      - "8083:8083"
+
+  shop-python:
+    image: shop-python
+    container_name: shop-python
+    depends_on:
+      - kafka
+    ports:
+      - "5000:5000"

@@ -15,7 +15,7 @@ class Consumer(threading.Thread):
     def run(self):
         try:
             consumer = KafkaConsumer(
-                bootstrap_servers=['kafka:9092'],
+                bootstrap_servers=['kafka:29092],
                 group_id='group_python',
                 consumer_timeout_ms=30000,
             )
